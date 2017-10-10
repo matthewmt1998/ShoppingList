@@ -4,22 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>ShoppingList</title>
 </head>
 <body>
+  <ul id = "groceries"> 
+  </ul>
+
   <form method = "post" id = "addGroceryForm">
     <input id = "groceryInput" type = "text" placeholder = "New Grocery">
     <button type = "submit">Add</button>
   </form>
+
   <script type="text/javascript">
     var groceries = []
     document.querySelector('#addGroceryForm').addEventListener('submit', addGrocery)
+
     function addGrocery (event) {
       event.preventDefault()
+
       var groceryInput = document.querySelector('#groceryInput')
       groceries.push(groceryInput.value)
       groceryInput.value = ''
-      console.log(groceries)
+
+      updateGroceries()
+    }
+
+    function updateGroceries () {
+      var groceriesElement = document.querySelector('#groceries')
+      groceriesElement.innerHTML = ''
+
+      for (var currentIndex = 0; currentIndex < groceries.length; currentIndex++) {
+        var grocery =  groceries[currentIndex]
+        groceriesElement.innerHTML += '<li>' + grocery + '</li>'
+        }
     }
   </script>
 </body>
