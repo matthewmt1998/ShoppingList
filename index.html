@@ -12,7 +12,15 @@
     <button type = "submit">Add</button>
   </form>
   <script type="text/javascript">
-    
+    var groceries = []
+    document.querySelector('#addGroceryForm').addEventListener('submit', addGrocery)
+    function addGrocery (event) {
+      event.preventDefault()
+      var groceryInput = document.querySelector('#groceryInput')
+      groceries.push(groceryInput.value)
+      groceryInput.value = ''
+      console.log(groceries)
+    }
   </script>
 </body>
 </html>
